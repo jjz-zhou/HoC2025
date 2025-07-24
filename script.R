@@ -49,7 +49,7 @@ rm(list=ls())
 # Wrangling ---------------------------------------------------------------
 
 # Candidate info
-cand_id <- read.csv("candidate_id.csv",header=F) |>
+cand_id <- read.csv("data/candidate_id.csv",header=F) |>
   dplyr::select(-c(V1,V9))
 
 colnames(cand_id) <- c("khId","name_kanji","name_kana", "partyId", "senkId",
@@ -57,7 +57,7 @@ colnames(cand_id) <- c("khId","name_kanji","name_kana", "partyId", "senkId",
 
 
 # Party id
-stindex <- read.csv("stindex.csv",header=F,row.names = 1)
+stindex <- read.csv("data/stindex.csv",header=F,row.names = 1)
 colnames(stindex)[c(1,2,4)] <- c("partyId","partyNm_short","partyNm")
 
 # Cand-party
@@ -67,7 +67,7 @@ cand_info <- left_join(cand_id,stindex[,c("partyId","partyNm_short","partyNm")],
 # Pref id
 # total units: 45
 # tottori-shimane (code:31); ehime-kochi (code:38)
-sindex <- read.csv("sindex.csv",header=F) |>
+sindex <- read.csv("data/sindex.csv",header=F) |>
   dplyr::select(-c(1,2,3))
 
 colnames(sindex) <- c("senkId","senkNm","code")
@@ -75,11 +75,11 @@ colnames(sindex) <- c("senkId","senkNm","code")
 
 # results
 
-results <- read_xml("results.xml")
+results <- read_xml("data/results.xml")
 
 # results by prefecture
 pref_results <- results |>
-  xml_nodes("senk")
+  xml_find_all("senk")
 
 out_all <- data.frame()
 for (i in 1:length(pref_results)) {
@@ -145,4 +145,4 @@ final <- left_join(out_all,cand_info,by="khId") |>
 
 # Write file --------------------------------------------------------------
 
-write.csv(final, "HoC2025_results.csv", row.names = F, fileEncoding = "UTF-8")
+write.csv(final, "output/HoC2025_results.csv", row.names = F, fileEncoding = "UTF-8")
