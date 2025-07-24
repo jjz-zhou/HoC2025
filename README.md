@@ -26,4 +26,4 @@ Election results retrieved from [NHK website](https://www.nhk.or.jp/senkyo/datab
 
 ## Notes
 
-- 1892 (out of 1894) municipalities can be identified with [eStat municipality identifiers](https://www.e-stat.go.jp/municipalities/cities/areacode). The remaining two municipalities are "薩摩川内市１" and "薩摩川内市２", with `muncode` "NA".
+- 1892 (out of 1894) municipalities can be identified with `muncode` ([eStat municipality identifiers](https://www.e-stat.go.jp/municipalities/cities/areacode)). The remaining two municipalities are "薩摩川内市１" and "薩摩川内市２", coded "NA" under `muncode`.
