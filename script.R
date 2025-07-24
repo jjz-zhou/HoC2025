@@ -53,7 +53,7 @@ cand_id <- read.csv("data/candidate_id.csv",header=F) |>
   dplyr::select(-c(V1,V9))
 
 colnames(cand_id) <- c("khId","name_kanji","name_kana", "partyId", "senkId",
-                       "hirei","cand_exp")
+                       "hirei","cand_incumbent")
 
 
 # Party id
@@ -62,7 +62,7 @@ colnames(stindex)[c(1,2,4)] <- c("partyId","partyNm_short","partyNm")
 
 # Cand-party
 cand_info <- left_join(cand_id,stindex[,c("partyId","partyNm_short","partyNm")],by="partyId") |>
-  select(-senkId)
+  select(-c(senkId,hirei))
 
 # Pref id
 # total units: 45
@@ -139,7 +139,7 @@ for (i in 1:length(pref_results)) {
 out_all$khId <- as.numeric(out_all$khId)
 
 final <- left_join(out_all,cand_info,by="khId") |>
-  select(1:3,5:6,4,14:20,7,11,9:10,12,13)
+  select(1:3,5:6,4,14:19,7,11,9:10,12:13)
 
 
 
