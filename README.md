@@ -8,8 +8,8 @@ Election results retrieved from [NHK website](https://www.nhk.or.jp/senkyo/datab
 | `senkId`         | Unique identifier for electoral districts (n=45). Electoral district boundaries are drawn based on prefectures with the exception of the Tottori-Shimane and Ehime-Kochi districts. |
 | `senkNm`         | Electoral district name in kanji. |
 | `pref_turnout`   | Voter turnout (%) at the prefectural level. |
-| `pref_votes`     | Total number of valid votes cast in the prefecture. |
-| `pref_voteShare` | Vote share (%) for the candidate in the prefecture. |
+| `pref_votes`     | Votes cast for candidate in the prefecture. |
+| `pref_voteShare` | Vote share (%) for candidate in the prefecture. |
 | `khId`           | Unique identifier for the candidate (character class). |
 | `name_kanji`     | Candidate's name in kanji. |
 | `name_kana`      | Candidate's name in kana. |
@@ -27,3 +27,4 @@ Election results retrieved from [NHK website](https://www.nhk.or.jp/senkyo/datab
 ## Notes
 
 - 1892 (out of 1894) municipalities can be identified with `muncode` ([eStat municipality identifier](https://www.e-stat.go.jp/municipalities/cities/areacode)). The remaining two municipalities are "薩摩川内市１" and "薩摩川内市２", coded "NA" under `muncode`.
+- July 25, 2025: `pref_votes` description edited; previously noted as total valid votes cast.
